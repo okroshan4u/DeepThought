@@ -1,4 +1,4 @@
-// routes/eventRoutes.js
+
 const express = require("express");
 const { ObjectId } = require("mongodb");
 const connectDB = require("../db");
@@ -6,13 +6,11 @@ const multer = require("multer");
 
 const router = express.Router();
 
-// File Upload Config (storing filename only)
+
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// -------------------------
-// GET EVENT BY ID
-// -------------------------
+
 router.get("/events", async (req, res) => {
     try {
         const db = await connectDB();
@@ -33,9 +31,7 @@ router.get("/events", async (req, res) => {
 });
 
 
-// -------------------------
-// GET EVENTS WITH PAGINATION
-// -------------------------
+
 router.get("/events", async (req, res) => {
     try {
         const db = await connectDB();
@@ -50,7 +46,7 @@ router.get("/events", async (req, res) => {
 
         const result = await events
             .find({})
-            .sort({ schedule: -1 }) // latest first
+            .sort({ schedule: -1 }) 
             .skip(skip)
             .limit(parseInt(limit))
             .toArray();
@@ -62,9 +58,7 @@ router.get("/events", async (req, res) => {
 });
 
 
-// -------------------------
-// CREATE EVENT (POST)
-// -------------------------
+
 router.post("/events", upload.single("image"), async (req, res) => {
     try {
         const db = await connectDB();
@@ -112,10 +106,7 @@ router.post("/events", upload.single("image"), async (req, res) => {
 });
 
 
-// -------------------------
-// UPDATE EVENT (PUT)
-// /events/:id
-// -------------------------
+
 router.put("/events/:id", upload.single("image"), async (req, res) => {
     try {
         const db = await connectDB();
@@ -148,9 +139,7 @@ router.put("/events/:id", upload.single("image"), async (req, res) => {
 });
 
 
-// -------------------------
-// DELETE EVENT
-// -------------------------
+
 router.delete("/events/:id", async (req, res) => {
     try {
         const db = await connectDB();
