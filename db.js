@@ -9,7 +9,7 @@ let db;
 async function connectDB() {
     if (!db) {
         await client.connect();
-        db = client.db("dt_events_db"); // database name
+        db = client.db("dt_events_db"); 
         console.log("MongoDB Connected");
     }
     return db;
