@@ -137,7 +137,7 @@ router.put("/events/:id", upload.single("image"), async (req, res) => {
 });
 
 
-// here delete funtion will go 
+
 router.delete("/events/:id", async (req, res) => {
     try {
         const db = await connectDB();
