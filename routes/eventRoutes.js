@@ -1,11 +1,9 @@
-
 const express = require("express");
 const { ObjectId } = require("mongodb");
 const connectDB = require("../db");
 const multer = require("multer");
 
 const router = express.Router();
-
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -139,7 +137,7 @@ router.put("/events/:id", upload.single("image"), async (req, res) => {
 });
 
 
-
+// here delete funtion will go 
 router.delete("/events/:id", async (req, res) => {
     try {
         const db = await connectDB();
